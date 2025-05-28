@@ -1,0 +1,45 @@
+## Task Endpoints
+
+### 1. GET all tasks
+GET http://localhost:8080/api/v1/tasks
+
+### 2. GET a single task by ID
+GET http://localhost:8080/api/v1/tasks/1
+
+### 3. CREATE a new task
+POST http://localhost:8080/api/v1/tasks
+Content-Type: application/json
+
+{
+  "title": "Sample Task",
+  "description": "This is a test task.",
+  "status": "IN_PROGRESS"
+}
+
+### 4. UPDATE a task by ID
+PUT http://localhost:8080/api/v1/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Updated Task Title",
+  "description": "Updated description.",
+  "status": "COMPLETED"
+}
+
+### 5. DELETE a task by ID
+DELETE http://localhost:8080/api/v1/tasks/1
+
+### 6. PATCH Mark Task as Completed
+PATCH http://localhost:8080/api/v1/tasks/1/complete
+
+### 7. GET Task Statistics
+GET http://localhost:8080/api/v1/tasks/statistics
+
+
+## Health Check Endpoints
+
+### 1. Health Check
+GET http://localhost:8080/api/v1/health
+
+### 2. Ping
+GET http://localhost:8080/api/v1/health/ping
