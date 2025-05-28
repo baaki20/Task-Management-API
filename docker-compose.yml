@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Task Management API Service
+  task-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: task-management-api
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SERVER_PORT=8080
+    volumes:
+      # Mount logs directory for persistence
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    restart: unless-stopped
+    networks:
+      - task-network
+
+  # Optional: Add a database service for production
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: task-postgres
+  #   environment:
+  #     POSTGRES_DB: taskdb
+  #     POSTGRES_USER: taskuser
+  #     POSTGRES_PASSWORD: taskpass
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - task-network
+
+networks:
+  task-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
