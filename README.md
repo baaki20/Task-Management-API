@@ -272,10 +272,6 @@ src/
 
 This project is licensed under the MIT License.
 
-## 🆘 Support
-
-For questions or issues, please create an issue in the repository or contact <Abdul Baaki Hudu>.
-
 ---
 
 **Happy Coding! 🚀**
