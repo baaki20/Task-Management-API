@@ -40,8 +40,9 @@ The application follows a layered architecture:
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd task-management-api
+   git clone https://github.com/baaki20/Task-Management-API.git
+
+   cd "Task Management API"
    ```
 
 2. **Build the application**
@@ -273,7 +274,7 @@ This project is licensed under the MIT License.
 
 ## 🆘 Support
 
-For questions or issues, please create an issue in the repository or contact the development team.
+For questions or issues, please create an issue in the repository or contact <Abdul Baaki Hudu>.
 
 ---
 
