@@ -1,6 +1,11 @@
 # Use official OpenJDK 21 runtime as base image
 FROM openjdk:21-jdk-slim
 
+# Install required packages
+RUN apt-get update && \
+    apt-get install -y curl dos2unix && \
+    rm -rf /var/lib/apt/lists/*
+
 # Set working directory inside container
 WORKDIR /app
 
@@ -10,10 +15,11 @@ COPY .mvn .mvn
 COPY pom.xml .
 
 # Make Maven wrapper executable
+RUN sed -i 's/\r$//' mvnw
 RUN chmod +x ./mvnw
 
-# Download dependencies (this layer will be cached if pom.xml doesn't change)
-RUN ./mvnw dependency:go-offline -B
+# Download dependencies with retry (handles transient network issues)
+RUN until ./mvnw dependency:go-offline -B; do echo "Retrying dependency download..."; sleep 5; done
 
 # Copy source code
 COPY src ./src
