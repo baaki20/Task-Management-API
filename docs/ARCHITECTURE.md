@@ -2,9 +2,7 @@
 
 ## Component Architecture Diagram
 
-> **Note:** To view the diagram, copy the code below and paste it into a [Mermaid Live Editor](https://mermaid.live/) or use a Markdown viewer that supports Mermaid diagrams.
-
-```
+```mermaid
 graph TB
     %% External Layer
     Client[Client Applications<br/>Web/Mobile/API Clients]
