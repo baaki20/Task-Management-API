@@ -17,7 +17,6 @@ public class TaskResponse {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    // Constructors
     public TaskResponse() {}
 
     public TaskResponse(Long id, String title, String description, String status,
@@ -31,7 +30,6 @@ public class TaskResponse {
         this.updatedAt = updatedAt;
     }
 
-    // Factory method to create TaskResponse from Task entity
     public static TaskResponse fromTask(Task task) {
         return new TaskResponse(
                 task.getId(),
@@ -44,7 +42,6 @@ public class TaskResponse {
         );
     }
 
-    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

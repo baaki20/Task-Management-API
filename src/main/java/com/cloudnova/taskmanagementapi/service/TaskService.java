@@ -232,7 +232,6 @@ public class TaskService {
             this.totalCount = totalCount;
         }
 
-        // Getters
         public long getTodoCount() { return todoCount; }
         public long getInProgressCount() { return inProgressCount; }
         public long getCompletedCount() { return completedCount; }

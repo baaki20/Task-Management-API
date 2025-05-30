@@ -19,9 +19,8 @@ public class TaskCreateRequest {
     @Size(max = 500, message = "Description cannot exceed 500 characters")
     private String description;
 
-    private String status; // Optional, defaults to TODO
+    private String status;
 
-    // Constructors
     public TaskCreateRequest() {}
 
     public TaskCreateRequest(String title, String description) {
@@ -35,7 +34,6 @@ public class TaskCreateRequest {
         this.status = status;
     }
 
-    // Convert DTO to Entity
     public Task toTask() {
         Task task = new Task();
         task.setTitle(this.title);
@@ -50,7 +48,6 @@ public class TaskCreateRequest {
         return task;
     }
 
-    // Getters and Setters
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
 

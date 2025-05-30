@@ -17,7 +17,6 @@ public class TaskUpdateRequest {
 
     private String status;
 
-    // Constructors
     public TaskUpdateRequest() {}
 
     public TaskUpdateRequest(String title, String description, String status) {
@@ -26,7 +25,6 @@ public class TaskUpdateRequest {
         this.status = status;
     }
 
-    // Convert DTO to Entity
     public Task toTask() {
         Task task = new Task();
         task.setTitle(this.title);
@@ -39,7 +37,6 @@ public class TaskUpdateRequest {
         return task;
     }
 
-    // Getters and Setters
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
 

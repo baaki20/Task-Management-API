@@ -33,20 +33,17 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
         logger.info("Initializing sample data...");
 
-        // Check if data already exists
         if (taskRepository.count() > 0) {
             logger.info("Data already exists, skipping initialization");
             return;
         }
 
-        // Create sample tasks
         createSampleTasks();
 
         logger.info("Sample data initialization completed. Total tasks: {}", taskRepository.count());
     }
 
     private void createSampleTasks() {
-        // Sample tasks with different statuses
         Task[] sampleTasks = {
                 new Task("Complete project documentation",
                         "Write comprehensive API documentation with examples and usage guides",
@@ -89,7 +86,6 @@ public class DataInitializer implements CommandLineRunner {
                         TaskStatus.IN_PROGRESS)
         };
 
-        // Save all sample tasks
         for (Task task : sampleTasks) {
             taskRepository.save(task);
             logger.debug("Created sample task: {}", task.getTitle());

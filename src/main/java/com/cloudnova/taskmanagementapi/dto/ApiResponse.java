@@ -12,7 +12,6 @@ public class ApiResponse<T> {
     private T data;
     private LocalDateTime timestamp;
 
-    // Constructors
     public ApiResponse() {
         this.timestamp = LocalDateTime.now();
     }
@@ -24,7 +23,6 @@ public class ApiResponse<T> {
         this.data = data;
     }
 
-    // Factory methods
     public static <T> ApiResponse<T> success(T data, String message) {
         return new ApiResponse<>(true, message, data);
     }
@@ -37,7 +35,6 @@ public class ApiResponse<T> {
         return new ApiResponse<>(false, message, data);
     }
 
-    // Getters and Setters
     public boolean isSuccess() { return success; }
     public void setSuccess(boolean success) { this.success = success; }
 
