@@ -1,20 +1,34 @@
 package com.cloudnova.taskmanagementapi.dto;
 
 import com.cloudnova.taskmanagementapi.model.Task;
-
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 
 /**
  * TaskResponse - DTO for task responses
  */
+@Schema(description = "Task response payload")
 public class TaskResponse {
 
+    @Schema(description = "Task unique identifier", example = "1")
     private Long id;
+
+    @Schema(description = "Task title", example = "Complete project documentation")
     private String title;
+
+    @Schema(description = "Task description", example = "Write comprehensive API documentation")
     private String description;
+
+    @Schema(description = "Task status code", example = "TODO")
     private String status;
+
+    @Schema(description = "Task status display name", example = "To Do")
     private String statusDisplay;
+
+    @Schema(description = "Task creation timestamp", example = "2024-01-15T10:30:00")
     private LocalDateTime createdAt;
+
+    @Schema(description = "Task last update timestamp", example = "2024-01-15T10:30:00")
     private LocalDateTime updatedAt;
 
     // Constructors

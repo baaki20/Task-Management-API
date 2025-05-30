@@ -4,22 +4,27 @@ import com.cloudnova.taskmanagementapi.model.Task;
 import com.cloudnova.taskmanagementapi.model.TaskStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDateTime;
 
 /**
  * TaskCreateRequest - DTO for creating new tasks
  */
+@Schema(description = "Request payload for creating a new task")
 public class TaskCreateRequest {
 
+    @Schema(description = "Task title", example = "Complete project documentation", required = true)
     @NotBlank(message = "Title is required")
     @Size(min = 1, max = 100, message = "Title must be between 1 and 100 characters")
     private String title;
 
+    @Schema(description = "Task description", example = "Write comprehensive API documentation with examples")
     @Size(max = 500, message = "Description cannot exceed 500 characters")
     private String description;
 
-    private String status; // Optional, defaults to TODO
+    @Schema(description = "Task status", example = "TODO", allowableValues = {"TODO", "IN_PROGRESS", "COMPLETED", "CANCELLED"})
+    private String status;
 
     // Constructors
     public TaskCreateRequest() {}

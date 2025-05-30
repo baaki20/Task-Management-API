@@ -1,6 +1,9 @@
 package com.cloudnova.taskmanagementapi.controller;
 
 import com.cloudnova.taskmanagementapi.dto.ApiResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,14 +21,31 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/health")
+@Tag(name = "Health Check", description = "Health monitoring endpoints")
 public class HealthController {
 
-    /**
-     * GET /api/v1/health
-     * Basic health check endpoint
-     *
-     * @return health status
-     */
+    @Operation(
+            summary = "Health check",
+            description = "Check application health status"
+    )
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    responseCode = "200",
+                    description = "Application is healthy",
+                    content = {@io.swagger.v3.oas.annotations.media.Content(
+                            mediaType = "application/json",
+                            schema = @io.swagger.v3.oas.annotations.media.Schema(implementation = ApiResponse.class)
+                    )}
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    responseCode = "500",
+                    description = "Application is unhealthy",
+                    content = {@io.swagger.v3.oas.annotations.media.Content(
+                            mediaType = "application/json",
+                            schema = @io.swagger.v3.oas.annotations.media.Schema(implementation = ApiResponse.class)
+                    )}
+            )
+    })
     @GetMapping
     public ResponseEntity<ApiResponse<Map<String, Object>>> healthCheck() {
 
@@ -43,6 +63,11 @@ public class HealthController {
         return ResponseEntity.ok(response);
     }
 
+    @Operation(
+            summary = "Ping endpoint",
+            description = "Simple ping-pong endpoint to verify service availability"
+    )
+
     /**
      * GET /api/v1/health/ping
      * Simple ping endpoint
@@ -50,7 +75,7 @@ public class HealthController {
      * @return pong response
      */
     @GetMapping("/ping")
-    public ResponseEntity<ApiResponse<String>> ping() {
+    public ResponseEntity<ApiResponse<String>> ping(){
 
         ApiResponse<String> response = ApiResponse.success(
                 "pong",
