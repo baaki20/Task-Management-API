@@ -274,4 +274,11 @@ This project is licensed under the MIT License.
 
 ---
 
+## Architecture
+
+For detailed architecture information, see [Architecture Documentation](docs/ARCHITECTURE.md)
+
+## Project Structure
+
+
 **Happy Coding! 🚀**
